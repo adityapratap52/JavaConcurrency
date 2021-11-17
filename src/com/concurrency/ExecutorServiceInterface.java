@@ -25,7 +25,7 @@ class MyThread implements Runnable{
 
 public class ExecutorServiceInterface {
     public static void main(String[] args) {
-        CountDownLatch cd1 = new CountDownLatch(4);
+        CountDownLatch cd1 = new CountDownLatch(4);       // 4 is the number of thread
         CountDownLatch cd2 = new CountDownLatch(4);
         CountDownLatch cd3 = new CountDownLatch(4);
         CountDownLatch cd4 = new CountDownLatch(4);

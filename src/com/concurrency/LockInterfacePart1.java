@@ -37,7 +37,7 @@ class ThreadDemo extends Thread{
         }
 }
 
-public class LockInterface {
+public class LockInterfacePart1 {
     public static void main(String[] args) {
         PrintDemo pd = new PrintDemo();
 

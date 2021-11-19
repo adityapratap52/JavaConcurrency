@@ -12,7 +12,7 @@ class Computation1 implements Runnable{
     public void run(){
         product = 2 * 3;
         try {
-            CyclicBarrierClass.barrier.await();
+            CyclicBarrierClassPart1.barrier.await();
         }catch (InterruptedException | BrokenBarrierException e){
             e.printStackTrace();
         }
@@ -25,24 +25,24 @@ class Computation2 implements Runnable{
     @Override
     public void run(){
         // check if barrier is broken or not
-        System.out.println("Is the barrier broken? - "+CyclicBarrierClass.barrier.isBroken());
+        System.out.println("Is the barrier broken? - "+CyclicBarrierClassPart1.barrier.isBroken());
         sum = 10 + 20;
         try {
-            CyclicBarrierClass.barrier.await(3000, TimeUnit.MILLISECONDS);
+            CyclicBarrierClassPart1.barrier.await(3000, TimeUnit.MILLISECONDS);
 
             // number of parties waiting at the barrier
-            System.out.println("Number of parties waiting at the barrier at this point = "+CyclicBarrierClass.barrier.getNumberWaiting());
+            System.out.println("Number of parties waiting at the barrier at this point = "+CyclicBarrierClassPart1.barrier.getNumberWaiting());
         }catch (InterruptedException | BrokenBarrierException | TimeoutException e){
             e.printStackTrace();
         }
     }
 }
 
-public class CyclicBarrierClass implements Runnable{
+public class CyclicBarrierClassPart1 implements Runnable{
     public static CyclicBarrier barrier = new CyclicBarrier(3);
     public static void main(String[] args) {
         // parent thread
-        CyclicBarrierClass parentClass = new CyclicBarrierClass();
+        CyclicBarrierClassPart1 parentClass = new CyclicBarrierClassPart1();
         Thread myThread1 = new Thread(parentClass);
         myThread1.start();
     }
@@ -65,7 +65,7 @@ public class CyclicBarrierClass implements Runnable{
         myThr2.start();
 
         try{
-            CyclicBarrierClass.barrier.await();
+            CyclicBarrierClassPart1.barrier.await();
         }catch (InterruptedException | BrokenBarrierException e){
             System.out.println(e.getMessage());
         }
